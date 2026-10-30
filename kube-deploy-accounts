@@ -9,3 +9,4 @@ replicaset.apps/accounts-7667d4bf4b        1         1         1       45s
 
 NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 service/accounts     ClusterIP   10.43.120.158   <none>        8080/TCP   45s
+

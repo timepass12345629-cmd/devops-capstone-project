@@ -18,3 +18,4 @@ Then [expected outcome or response]
 - **Component / Service:** Customer Accounts Microservice
 - **API Method / Route:** [e.g., GET /accounts, POST /accounts]
 - **Definition of Done:** Automated unit tests pass with >= 95% coverage, code passes linting, peer-reviewed, and merged into main branch.
+

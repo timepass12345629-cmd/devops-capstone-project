@@ -19,3 +19,4 @@ EXPOSE 8080
 
 # Run the service using Gunicorn
 CMD ["gunicorn", "--bind=0.0.0.0:8080", "--log-level=info", "service:app"]
+

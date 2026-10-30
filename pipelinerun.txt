@@ -73,3 +73,4 @@
 [deploy : openshift-client] Waiting for rollout to complete...
 [deploy : openshift-client] deployment "accounts" successfully rolled out.
 PipelineRun cd-pipeline-run-1 completed successfully.
+

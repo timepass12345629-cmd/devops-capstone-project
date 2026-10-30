@@ -35,3 +35,4 @@ spec:
                 secretKeyRef:
                   name: postgresql
                   key: database-password
+
