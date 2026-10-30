@@ -1,0 +1,5 @@
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+accounts                      1.0       4c8b21ef890a   2 minutes ago    188MB
+localhost:32000/accounts      1.0       4c8b21ef890a   2 minutes ago    188MB
+python                        3.9-slim  98129e61c37b   2 weeks ago      125MB
+postgres                      alpine    a2c67644d6db   3 weeks ago      242MB

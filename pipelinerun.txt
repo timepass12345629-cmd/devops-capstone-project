@@ -1,0 +1,75 @@
+[cleanup : remove-workspace] Removing previous workspace files...
+[cleanup : remove-workspace] Workspace directory cleaned successfully.
+
+[git-clone : clone] Cloning git repository https://github.com/timepass12345629-cmd/devops-capstone-project to /workspace/source
+[git-clone : clone] Depth: 1
+[git-clone : clone] Commit: 7b34e19b52a0a2df372132a0339d2cbb54d6fa02
+[git-clone : clone] Successfully cloned repository.
+
+[lint : flake8] Running flake8 syntax and complexity checks...
+[lint : flake8] flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+[lint : flake8] 0
+[lint : flake8] flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
+[lint : flake8] 0
+[lint : flake8] Linting completed with 0 errors.
+
+[tests : nosetests] Starting PostgreSQL container...
+[tests : nosetests] Initializing test database...
+[tests : nosetests] Running nosetests -v --with-spec --spec-color --with-coverage --cover-package=service
+[tests : nosetests] Account Service Tests
+[tests : nosetests] - It should not Create an Account when sending the wrong data
+[tests : nosetests] - It should Create a new Account
+[tests : nosetests] - It should Delete an Account
+[tests : nosetests] - It should Get a list of Accounts
+[tests : nosetests] - It should Read a single Account
+[tests : nosetests] - It should not Read an Account that is not found
+[tests : nosetests] - It should be healthy
+[tests : nosetests] - It should get 200_OK from the Home Page
+[tests : nosetests] - It should not allow an illegal method call
+[tests : nosetests] - It should not Create an Account when sending the wrong media type
+[tests : nosetests] - It should Update an existing Account
+[tests : nosetests] - It should not Update an Account that is not found
+[tests : nosetests] - It should return security headers
+[tests : nosetests] - It should return a CORS header
+[tests : nosetests] Account Model Tests
+[tests : nosetests] - It should Create an Account and assert that it exists
+[tests : nosetests] - It should Find an Account by ID
+[tests : nosetests] - It should Update an Account
+[tests : nosetests] - It should Delete an Account
+[tests : nosetests] - It should List all Accounts in the database
+[tests : nosetests] - It should Find an Account by name
+[tests : nosetests] - It should Serialize an Account
+[tests : nosetests] - It should Deserialize an Account
+[tests : nosetests] Name                                Stmts   Miss  Cover   Missing
+[tests : nosetests] -----------------------------------------------------------------
+[tests : nosetests] service/__init__.py                    21      0   100%
+[tests : nosetests] service/common/cli_commands.py          8      0   100%
+[tests : nosetests] service/common/error_handlers.py       32      1    97%   48
+[tests : nosetests] service/common/log_handlers.py         11      1    91%   20
+[tests : nosetests] service/common/status.py               46      0   100%
+[tests : nosetests] service/config.py                       7      0   100%
+[tests : nosetests] service/models.py                      58      2    97%   75-76
+[tests : nosetests] service/routes.py                      52      0   100%
+[tests : nosetests] -----------------------------------------------------------------
+[tests : nosetests] TOTAL                                 235      4    98%
+[tests : nosetests] ----------------------------------------------------------------------
+[tests : nosetests] Ran 22 tests in 2.784s
+[tests : nosetests] OK
+
+[buildah : build] STEP 1/7: FROM python:3.9-slim
+[buildah : build] STEP 2/7: WORKDIR /app
+[buildah : build] STEP 3/7: COPY requirements.txt .
+[buildah : build] STEP 4/7: RUN pip install --no-cache-dir -r requirements.txt
+[buildah : build] STEP 5/7: COPY service/ ./service/
+[buildah : build] STEP 6/7: RUN useradd --uid 1000 theia && chown -R theia /app
+[buildah : build] STEP 7/7: CMD ["gunicorn", "--bind=0.0.0.0:8080", "--log-level=info", "service:app"]
+[buildah : build] COMMIT image-registry.openshift-image-registry.svc:5000/sn-labs-learner/accounts:latest
+[buildah : push] Pushing image image-registry.openshift-image-registry.svc:5000/sn-labs-learner/accounts:latest ...
+[buildah : push] Successfully pushed image.
+
+[deploy : openshift-client] Applying deployment configurations...
+[deploy : openshift-client] deployment.apps/accounts created
+[deploy : openshift-client] service/accounts created
+[deploy : openshift-client] Waiting for rollout to complete...
+[deploy : openshift-client] deployment "accounts" successfully rolled out.
+PipelineRun cd-pipeline-run-1 completed successfully.
